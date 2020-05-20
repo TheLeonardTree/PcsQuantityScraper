@@ -40,12 +40,17 @@ public class ProductPageLeonardCMS
        String CheckerString = "";
        String LastString = "";
        String CurrentString = "";
-       //forphase3
+       //for phase3
+       String[] CategoryHolder = new String[9999];
        String[] PTitleHolder = new String[9999];
        String[] MetaDescriptionHolder = new String[9999];
        String[] PageDescriptionHolder = new String[9999];
        int SubLoopCountHolder2 = 0;
+       //for phase 4
+       int filenamecounter = 0;
+       String GimmeAName = "";
 
+   
        //Part 1: Read The CSV To Get The Objects For Mass Page Creation Into String Arrays For Later Use
        File fileCMS = new File("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\MakeMassPages.csv"); 
        BufferedReader brCMS = new BufferedReader(new FileReader(fileCMS));
@@ -66,8 +71,7 @@ public class ProductPageLeonardCMS
         
         String HolderPart4 = part[3]; 
         ItemCategory[subloopcount] = part[3];
-                
-            IdHolder[subloopcount] = line3;     
+                   
              subloopcount++;
             }
         //Reset Stuff Incase I Need To Use Them Again
@@ -91,12 +95,13 @@ public class ProductPageLeonardCMS
           {
           //ArrayCount[] Counts The Number Of Categories    
           ArrayCount[ItemCatCheckerCount] = ItemCatCheckerCount;   
-          
+         // System.out.println("Array Count: "+ ArrayCount[ItemCatCheckerCount]);
           //ArrayCountCategoryNames[] Grabs The Name Of The Item Type So That It Can Be Pulled With The Count
           ArrayCountCategoryNames[ItemCatCheckerCount] = CurrentString;
-          
+          //System.out.println("Array Category: "+ ArrayCountCategoryNames[ItemCatCheckerCount]);
           //ArrayItemCount[] Counts The Item Number That Way We Know At What Number In The ItemCategory[subloopcount] That A New Category Occurs
           ArrayItemCount[ItemCatCheckerCount] = subloopcount; 
+          //System.out.println("Array Item Count: "+ ArrayItemCount[ItemCatCheckerCount]);
           ItemCatCheckerCount++; 
           }
           LastString = CurrentString;
@@ -115,11 +120,8 @@ public class ProductPageLeonardCMS
     //{
       //   out2.print(ArrayCountCategoryNames[subloopcount]+ "\n");
       //System.out.println(ArrayCountCategoryNames[subloopcount]); 
-        // out2.flush(); 
-
-       
+        // out2.flush();        
       //subloopcount++;  
-      
    //}
    //     //Close the Print Writer
    //out2.close();       
@@ -138,18 +140,16 @@ public class ProductPageLeonardCMS
             {         	
         String[] part = line4.split(",");
         String HolderPart0 = part[0];
+        CategoryHolder[subloopcount] = part[0];        
         
         String HolderPart1 = part[1];
         PTitleHolder[subloopcount] = part[1];
-        System.out.println(HolderPart1);
         
         String HolderPart2 = part[2]; 
         MetaDescriptionHolder[subloopcount] = part[2];
-        System.out.println(HolderPart2);
         
         String HolderPart3 = part[3];
         PageDescriptionHolder[subloopcount] = part[3];
-        System.out.println(HolderPart3);
         
              subloopcount++;
             }
@@ -158,17 +158,119 @@ public class ProductPageLeonardCMS
              subloopcount = 0;
              brCMS2.close();
 
-    //Part 4 Start The Category Page Creating Loop
-    while(subloopcount != ItemCatCheckerCount)
-    {
-        
+    //Part 4-5 Name The File For The Category Page Creating Loop
+    //Part 4, name the file something unique.
+       File file = new File("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\Counter.txt");
+       BufferedReader br = new BufferedReader(new FileReader(file));
+
+       String line5;
+			while ((line5 = br.readLine()) != null) 
+                        {
+                                filenamecounter = Integer.parseInt(line5);                                                                                               
+			}
+                        br.close();  
+    //Rename The Output File
+              FileWriter fw = new FileWriter("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\Counter.txt");
+      PrintWriter out = new PrintWriter(fw); 
+GimmeAName = ("C:\\Users\\tremanleo\\Documents\\LeonardCMS" + filenamecounter + ".csv");    
+File f = new File(GimmeAName);
+filenamecounter = filenamecounter + 1;
+//Save The New Number
+   out.print(filenamecounter);
+   out.flush(); 
+   //Close the Print Writer
+   out.close();       
+   //Close the File Writer
+   fw.close();     
+   
+//part 5 actually write the pages to each file
+   FileWriter fw2 = new FileWriter(GimmeAName);
+   PrintWriter out2 = new PrintWriter(fw2);  
+   int counterthing = 0;
+   String CategoryNameThing = "ArrayItemCount[ItemCatCheckerCount]";
+   String PageTitleNameThing = "";
+   String PageMetaDescriptionNameThing = "";
+   String PageDescriptionNameThing = "";
+   
+    while(subloopcount != SubLoopCountHolder)
+    {   
+        if(subloopcount == 0)
+        {
+            subloopcount++;
+            counterthing++;
+          CategoryNameThing = CategoryHolder[counterthing];
+          //announce new page start to system
+          System.out.println("Starting New Page For: " + CategoryNameThing);
+          System.out.println("Page Title: " + PTitleHolder[counterthing]);
+          PageTitleNameThing = PTitleHolder[counterthing];
+          System.out.println("Meta Description: " + MetaDescriptionHolder[counterthing]);
+          PageMetaDescriptionNameThing = MetaDescriptionHolder[counterthing];
+          System.out.println("Page Description: " + PageDescriptionHolder[counterthing]);
+          PageDescriptionNameThing = PageDescriptionHolder[counterthing]; 
+          
+          
+        }
+        System.out.println("Subloop Count: " + subloopcount);
+        if(subloopcount == ArrayItemCount[counterthing])
+        {
+          //This section here needs to end the previous page, as pages are divided by categories.
+             out2.print("\"<div class=\\\"row\\\">\\n\" +\n" +
+                "\"<div class=\\\"col\\\"><center><a href=\\\"https://www.dme.net/main-categories.php\\\">Back</a></center></div>\\n\" +\n" +
+                "\"</div>\\n\" +\n" +
+                "\"</div>\\n\" +\n" +
+                "\"</center>\\n\" +\n" +
+                "\"<div class=\\\"bnavbar\\\">&nbsp;</div>\\n\" +\n" +
+                "\"<div class=\\\"bnavbar2\\\"><center><a href=\\\"https://www.dme.net/digital-privacy-policy/\\\"><h4>Privacy Policy</h4></a></center></div><div class=\\\"bnavbar2\\\"><a href=\\\"https://www.dme.net/terms-of-sale-returns/\\\"><h4>Terms Of Use</h4></a></div><div class=\\\"hideformobilebnav\\\">&nbsp;</div><div class=\\\"hideformobilebnav\\\">&nbsp;</div><div class=\\\"bnavbar2\\\"><h4>© 2020 DME Company</h4></div>\\n\" +\n" +
+                "\"<div class=\\\"bnavbar\\\">&nbsp;</div>\\n\" +\n" +
+                "\"<script async src=\\\"https://www.googletagmanager.com/gtag/js?id=UA-153770781-1\\\"></script>\\n\" +\n" +
+                "\"<script>\\n\" +\n" +
+                "\"  window.dataLayer = window.dataLayer || [];\\n\" +\n" +
+                "\"  function gtag(){dataLayer.push(arguments);}\\n\" +\n" +
+                "\"  gtag('js', new Date());\\n\" +\n" +
+                "\"  gtag('config', 'UA-153770781-1');\\n\" +\n" +
+                "\"</script>\\n\" +\n" +
+                "\"<script>\\n\" +\n" +
+                "\"if('serviceWorker' in navigator) {\\n\" +\n" +
+                "\"  navigator.serviceWorker\\n\" +\n" +
+                "\"           .register('/superpwa-sw.js')\\n\" +\n" +
+                "\"           .then(function() { console.log(\\\"Service Worker Registered\\\"); });\\n\" +\n" +
+                "\"}\\n\" +\n" +
+                "\"</script>\\n\" +\n" +
+                "\"</body>\\n\" +\n" +
+                "\"</html>\");");
+               out.flush(); 
+            //Close the Print Writer
+            out.close();       
+            //Close the File Writer
+            fw.close();    
+          //This section checks the item number, if it is the appropreate number it will change the category. 
+          //This Part Sets The Variables For The New Page.
+          System.out.println("Array Count: " + ArrayItemCount[counterthing]);
+          CategoryNameThing = ArrayCountCategoryNames[counterthing];
+          //announce new page start to system
+          System.out.println("Starting New Page For: " + CategoryNameThing);
+          System.out.println("Page Title: " + PTitleHolder[counterthing]);
+          PageTitleNameThing = PTitleHolder[counterthing];
+          System.out.println("Meta Description: " + MetaDescriptionHolder[counterthing]);
+          PageMetaDescriptionNameThing = MetaDescriptionHolder[counterthing];
+          System.out.println("Page Description: " + PageDescriptionHolder[counterthing]);
+          PageDescriptionNameThing = PageDescriptionHolder[counterthing];          
+                  
+          //This section needs to write the start of the page.
+          
+          counterthing++;  
+        }
+        System.out.println("Item ID: " + IdHolder[subloopcount]);  
+        System.out.println("Item Title: " + ItemTitle[subloopcount]);          
+        System.out.println("Item URL: " + FinalURL[subloopcount]);      
+         
         
       subloopcount++;  
     }
+    
+//Part 5 Start The Category Page Creating Loop
 //Test Section For Making HTML File So I Don't Break Everything
 //This Will Be Put Into The Loop In Part 4 Later
-   FileWriter fw2 = new FileWriter("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\test.html");
-   PrintWriter out2 = new PrintWriter(fw2);  
 
    out2.print("<!DOCTYPE html>\n" +
 "<html lang=\"en\">\n" +
@@ -507,7 +609,6 @@ public class ProductPageLeonardCMS
 "           .then(function() { console.log(\"Service Worker Registered\"); });\n" +
 "}\n" +
 "</script>\n" +
-"<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js\" data-cf-beacon='{\"rayId\":\"59589a0dede47fac\",\"version\":\"2020.5.0\",\"startTime\":1589836612852}'></script>\n" +
 "</body>\n" +
 "</html>");
 
