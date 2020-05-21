@@ -462,16 +462,16 @@ filenamecounter = filenamecounter + 1;
             "<div class=\"bnavbar\">&nbsp;</div>\n" +
             "<div class=\"wnavbar\" width=\"10%\"><a href=\"https://www.dme.net/\" title=\"homepage\"><img src=\"https://www.dme.net/wp-content/uploads/2019/09/DME-Logo_Black-R.png\" width=\"277px\" height=\"52px\" alt=\"logo\"></a></div> <div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/\" title=\"homepage\"><h5>HOME</h5></a> </div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/products/\" alt=\"Products Page\"><h5> PRODUCTS</h5></a> </div><div width=\"10%\" class=\"wnavbar\"><h5> SOLUTIONS</h5></div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/support/\" alt=\"Support\"><h5>SUPPORT</h5></a> </div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/company/\"> <h5>COMPANY</h5></a></div><div class=\"wnavbar\"> <a href=\"https://store.milacron.com/naconfiguratorlist\"><h5>CONFIGURATORS</h5> </a></div><div class=\"wnavbar\"><a href=\"https://store.milacron.com/shop-parts?breadCrumFullItem=94\" title=\"EStore\" alt=\"Estore\"><img src=\"https://www.dme.net/wp-content/uploads/2020/02/shop-estore-button.png\" width=\"177px\" height=\"60px\" title=\"eStore\" alt=\"shop eStore\"></a></div>\n" +
             "<br>\n" +
-            "<center><h2>Purchase Premium Gate Cutters With The Buy Now Button Next To The Model You Want</h2></center>\n" +
+            "<center><h2>" + PageTitleNameThing + " With The Buy Now Button Next To The Model You Want</h2></center>\n" +
             "<br>\n" +
-            "<h3>DME Premium Gate Cutters are made from premium steel and have a sharper blade for a high performance cut. Available with several blade characteristics.</h3>\n" +
-            "<center>\n" +
-            "<div class=\"container2\">\n" +
-            "<div class=\"row\">\n" +
-            "<div class=\"col\"><b>Description</b></div>\n" +
-            "<div class=\"col\"><b>Part Number</b></div>\n" +
-            "<div class=\"col\"><b>Shop Now</b></div>\n" +
-            "</div>\n");  
+            "<h3>" + PageDescriptionNameThing + "</h3>" +
+            "<center>" +
+            "<div class=\"container2\">" +
+            "<div class=\"row\">" +
+            "<div class=\"col\"><b>Description</b></div>" +
+            "<div class=\"col\"><b>Part Number</b></div>" +
+            "<div class=\"col\"><b>Shop Now</b></div>" +
+            "</div>");  
             out2.flush(); 
         }
         System.out.println("Subloop Count: " + subloopcount);
@@ -792,16 +792,16 @@ filenamecounter = filenamecounter + 1;
             "<div class=\"bnavbar\">&nbsp;</div>\n" +
             "<div class=\"wnavbar\" width=\"10%\"><a href=\"https://www.dme.net/\" title=\"homepage\"><img src=\"https://www.dme.net/wp-content/uploads/2019/09/DME-Logo_Black-R.png\" width=\"277px\" height=\"52px\" alt=\"logo\"></a></div> <div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/\" title=\"homepage\"><h5>HOME</h5></a> </div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/products/\" alt=\"Products Page\"><h5> PRODUCTS</h5></a> </div><div width=\"10%\" class=\"wnavbar\"><h5> SOLUTIONS</h5></div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/support/\" alt=\"Support\"><h5>SUPPORT</h5></a> </div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/company/\"> <h5>COMPANY</h5></a></div><div class=\"wnavbar\"> <a href=\"https://store.milacron.com/naconfiguratorlist\"><h5>CONFIGURATORS</h5> </a></div><div class=\"wnavbar\"><a href=\"https://store.milacron.com/shop-parts?breadCrumFullItem=94\" title=\"EStore\" alt=\"Estore\"><img src=\"https://www.dme.net/wp-content/uploads/2020/02/shop-estore-button.png\" width=\"177px\" height=\"60px\" title=\"eStore\" alt=\"shop eStore\"></a></div>\n" +
             "<br>\n" +
-            "<center><h2>Purchase Premium Gate Cutters With The Buy Now Button Next To The Model You Want</h2></center>\n" +
+            "<center><h2>" + PageTitleNameThing + "With The Buy Now Button Next To The Model You Want</h2></center>\n" +
             "<br>\n" +
-            "<h3>DME Premium Gate Cutters are made from premium steel and have a sharper blade for a high performance cut. Available with several blade characteristics.</h3>\n" +
-            "<center>\n" +
-            "<div class=\"container2\">\n" +
-            "<div class=\"row\">\n" +
-            "<div class=\"col\"><b>Description</b></div>\n" +
-            "<div class=\"col\"><b>Part Number</b></div>\n" +
-            "<div class=\"col\"><b>Shop Now</b></div>\n" +
-            "</div>\n");   
+            "<h3>" + PageDescriptionNameThing + "</h3>" +
+            "<center>" +
+            "<div class=\"container2\">" +
+            "<div class=\"row\">" +
+            "<div class=\"col\"><b>Description</b></div>" +
+            "<div class=\"col\"><b>Part Number</b></div>" +
+            "<div class=\"col\"><b>Shop Now</b></div>" +
+            "</div>");   
          out2.flush(); 
           counterthing++;  
         }
