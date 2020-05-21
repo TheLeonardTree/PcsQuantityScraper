@@ -490,7 +490,7 @@ filenamecounter = filenamecounter + 1;
                  "<div class=\"bnavbar\">&nbsp;</div>" + "\n" +
                 "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-153770781-1\"></script> \n" +
                 "<script>\n" +
-                "  window.dataLayer = window.dataLayer || []; \n" +
+                "window.dataLayer = window.dataLayer || []; \n" +
                 "function gtag(){dataLayer.push(arguments);} \n " + 
                 "gtag('js', new Date());\n" +
                 "gtag('config', 'UA-153770781-1');\n" + 
@@ -501,7 +501,7 @@ filenamecounter = filenamecounter + 1;
                 ".then(function() { console.log(\"Service Worker Registered\"); });" +
                 "}" + "\n" +
                 "</script></body></html>");
-               out2.flush(); 
+            out2.flush(); 
             //Close the Print Writer
             out2.close();       
             //Close the File Writer
@@ -819,8 +819,38 @@ filenamecounter = filenamecounter + 1;
 "</div>\n");
       out2.flush(); 
       subloopcount++;  
+      if(subloopcount == SubLoopCountHolder)
+      {
+            fw2 = new FileWriter(GimmeAName, true);
+            out2 = new PrintWriter(fw2);  
+             out2.print("<div class=\"row\"><div class=\"col\"><center><a href=\"https://www.dme.net/main-categories.php\">Back</a></center></div> \n" + 
+               "</div> \n" + "\n" +
+                "</div> \n" + 
+                "</center> \n " + 
+                "<div class=\"bnavbar\">&nbsp;</div> \n" +
+                "<div class=\"bnavbar2\"><center><a href=\"https://www.dme.net/digital-privacy-policy/\"><h4>Privacy Policy</h4></a></center></div><div class=\"bnavbar2\"><a href=\"https://www.dme.net/terms-of-sale-returns/\"><h4>Terms Of Use</h4></a></div><div class=\"hideformobilebnav\">&nbsp;</div><div class=\"hideformobilebnav\">&nbsp;</div><div class=\"bnavbar2\"><h4>© 2020 DME Company</h4></div> \n " +
+                 "<div class=\"bnavbar\">&nbsp;</div>" + "\n" +
+                "<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-153770781-1\"></script> \n" +
+                "<script>\n" +
+                "window.dataLayer = window.dataLayer || []; \n" +
+                "function gtag(){dataLayer.push(arguments);} \n " + 
+                "gtag('js', new Date());\n" +
+                "gtag('config', 'UA-153770781-1');\n" + 
+                "</script>\n" + "\n" +
+                "<script>\n" + "\n" +
+                "if('serviceWorker' in navigator) {\"navigator.serviceWorker" + "\n" +
+                ".register('/superpwa-sw.js')\n" +
+                ".then(function() { console.log(\"Service Worker Registered\"); });" +
+                "}" + "\n" +
+                "</script></body></html>");
+            out2.flush(); 
+            //Close the Print Writer
+            out2.close();       
+            //Close the File Writer
+            fw2.close();      
+      }
     }
-    
+subloopcount = 0;    
 //Part 5 Start The Category Page Creating Loop
 //Test Section For Making HTML File So I Don't Break Everything
 //This Will Be Put Into The Loop In Part 4 Later
