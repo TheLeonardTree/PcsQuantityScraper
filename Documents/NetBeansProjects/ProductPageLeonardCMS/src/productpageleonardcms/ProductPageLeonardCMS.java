@@ -23,15 +23,20 @@ public class ProductPageLeonardCMS
         Part 4B: Create The HTML Page By Using The Information Pulled From The CSV
         Part 4C: Print The HTML Page To A Folder
         Part 4D: Loop Through Every Page We Need To Make
+        Part 5: Actually Write The Pages To Each File
+        Part 6: Write The Sitemap.xml File
         */
         
        //Part 0: Define Variables
        int SubLoopCountHolder = 0;
        int subloopcount = 0;
+       int FileNamePhase6Count = 1;
        String[] IdHolder = new String[999999];
        String[] ItemTitle = new String[999999];
        String[] FinalURL = new String[999999];
        String[] ItemCategory = new String[999999];
+       String FileNameWithoutSpaces = "";
+       String FileNameModifier = "";
        //for phase 2
        String[] ArrayCountCategoryNames = new String[99999];
        int[] ArrayCount = new int[99999];
@@ -49,13 +54,8 @@ public class ProductPageLeonardCMS
        //for phase 4
        int filenamecounter = 0;
        String GimmeAName = "";
-       //SuperMassiveStringArray
-       //If I can't figure out how to append and close each file with all 3 portions of the loop, I will just make a super massive string array and do it.
-       //This might have some problems with some of the seperate pages though.
-      // String[] SuperMassiveStringArray = new String[999999999];
-       //int supermassivecounter = 0;
-       //int supermassiveholder = 0;
-      
+       //for phase 6
+       File fileSitemap = new File("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\LeonardCMSSiteMap.xml"); 
    
        //Part 1: Read The CSV To Get The Objects For Mass Page Creation Into String Arrays For Later Use
        File fileCMS = new File("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\MakeMassPages.csv"); 
@@ -190,9 +190,18 @@ public class ProductPageLeonardCMS
 			}
                         br.close();  
     //Rename The Output File
+    
+    //Combine The Title With A Climbing Number Then Remove Spaces To Make The FileName
+    FileNameWithoutSpaces = PTitleHolder[FileNamePhase6Count];
+    System.out.println(FileNamePhase6Count);
+    System.out.println(FileNameWithoutSpaces);
+    FileNameModifier = FileNameWithoutSpaces.replaceAll(" ", "");
+    FileNameWithoutSpaces = FileNameModifier.replaceAll("/", "");
+    FileNamePhase6Count++;
+    
               FileWriter fw = new FileWriter("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\Counter.txt");
       PrintWriter out = new PrintWriter(fw); 
-GimmeAName = ("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\HtmlHolder\\" + filenamecounter + ".html");    
+GimmeAName = ("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\HtmlHolder\\" + FileNameWithoutSpaces + ".html");    
 File f = new File(GimmeAName);
 filenamecounter = filenamecounter + 1;
 //Save The New Number
@@ -205,12 +214,8 @@ filenamecounter = filenamecounter + 1;
    
           CategoryNameThing = CategoryHolder[counterthing];
           //announce new page start to system
-          System.out.println("Starting New Page For: " + CategoryNameThing);
-          System.out.println("Page Title: " + PTitleHolder[counterthing]);
           PageTitleNameThing = PTitleHolder[counterthing];
-          System.out.println("Meta Description: " + MetaDescriptionHolder[counterthing]);
           PageMetaDescriptionNameThing = MetaDescriptionHolder[counterthing];
-          System.out.println("Page Description: " + PageDescriptionHolder[counterthing]);
           PageDescriptionNameThing = PageDescriptionHolder[counterthing]; 
              FileWriter fw2 = new FileWriter(GimmeAName);
             PrintWriter out2 = new PrintWriter(fw2);  
@@ -475,7 +480,6 @@ filenamecounter = filenamecounter + 1;
             "</div>");  
             out2.flush(); 
         }
-        System.out.println("Subloop Count: " + subloopcount);
         if(subloopcount == ArrayItemCount[counterthing])
         {
           //This section here needs to end the previous page, as pages are divided by categories.
@@ -508,15 +512,10 @@ filenamecounter = filenamecounter + 1;
             fw2.close();    
           //This section checks the item number, if it is the appropreate number it will change the category. 
           //This Part Sets The Variables For The New Page.
-          System.out.println("Array Count: " + ArrayItemCount[counterthing]);
           CategoryNameThing = ArrayCountCategoryNames[counterthing];
           //announce new page start to system
-          System.out.println("Starting New Page For: " + CategoryNameThing);
-          System.out.println("Page Title: " + PTitleHolder[counterthing]);
           PageTitleNameThing = PTitleHolder[counterthing];
-          System.out.println("Meta Description: " + MetaDescriptionHolder[counterthing]);
           PageMetaDescriptionNameThing = MetaDescriptionHolder[counterthing];
-          System.out.println("Page Description: " + PageDescriptionHolder[counterthing]);
           PageDescriptionNameThing = PageDescriptionHolder[counterthing];          
                   
           //This section needs to write the start of the page.
@@ -530,9 +529,18 @@ filenamecounter = filenamecounter + 1;
                                            }
                                            br.close();  
                        //Rename The Output File
-                                 FileWriter fw = new FileWriter("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\Counter.txt");
-                         PrintWriter out = new PrintWriter(fw); 
-                   GimmeAName = ("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\HtmlHolder\\" + filenamecounter + ".html");    
+                                                //Combine The Title With A Climbing Number Then Remove Spaces To Make The FileName
+                                                
+    FileNameWithoutSpaces = PTitleHolder[FileNamePhase6Count];
+    System.out.println(FileNamePhase6Count);
+    System.out.println(FileNameWithoutSpaces);
+    FileNameModifier = FileNameWithoutSpaces.replaceAll(" ", "");
+    FileNameWithoutSpaces = FileNameModifier.replaceAll("/", "");
+    FileNamePhase6Count++;
+                         FileWriter fw = new FileWriter("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\Counter.txt");
+                         PrintWriter out = new PrintWriter(fw);
+
+                   GimmeAName = ("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\HtmlHolder\\" + FileNameWithoutSpaces + ".html");  
                    File f = new File(GimmeAName);
                    filenamecounter = filenamecounter + 1;
                    //Save The New Number
@@ -810,9 +818,6 @@ filenamecounter = filenamecounter + 1;
          out2.flush(); 
           counterthing++;  
         }
-        System.out.println("Item ID: " + IdHolder[subloopcount]);  
-        System.out.println("Item Title: " + ItemTitle[subloopcount]);          
-        System.out.println("Item URL: " + FinalURL[subloopcount]);  
                      FileWriter fw2 = new FileWriter(GimmeAName, true);
             PrintWriter out2 = new PrintWriter(fw2);  
         out2.print("<div class=\"row\"><div class=\"col\">" + ItemTitle[subloopcount] + "</div><div class=\"col\">" + IdHolder[subloopcount] + "</div><div class=\"col\"><a title=\"" + IdHolder[subloopcount] +"\" href=\"" + FinalURL[subloopcount] + "\">Buy The " + IdHolder[subloopcount] + " Now</a></div>\n" +
@@ -851,8 +856,36 @@ filenamecounter = filenamecounter + 1;
       }
     }
 subloopcount = 0;    
-//Part 5 Start The Category Page Creating Loop
-//Test Section For Making HTML File So I Don't Break Everything
-//This Will Be Put Into The Loop In Part 4 Later
+//Part 6 Create the sitemap.xml file
+       FileWriter fw5 = new FileWriter(fileSitemap);
+       PrintWriter out5 = new PrintWriter(fw5);    
+       
+       out5.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"//www.dme.net/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl\"?>\n" +
+"<urlset xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\" xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd\" xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">");
+       out5.flush(); 
+       FileNamePhase6Count = 1;
+       while(subloopcount != ItemCatCheckerCount)
+       {
+
+           FileNameWithoutSpaces = PTitleHolder[FileNamePhase6Count];
+    FileNameModifier = FileNameWithoutSpaces.replaceAll(" ", "");
+    FileNameWithoutSpaces = FileNameModifier.replaceAll("/", "");
+         out5.print("	<url>\n" +
+                "<loc>" + FileNameWithoutSpaces + ".html</loc>\n" +
+"		<lastmod>2020-04-07T16:16:45+00:00</lastmod>\n" +
+"	</url>");
+         FileNamePhase6Count++;
+         out5.flush();
+         subloopcount++;  
+       }
+       subloopcount = 0;
+       
+       fw5 = new FileWriter(fileSitemap);
+       out5 = new PrintWriter(fw5);
+       out5.print("</urlset>\n" +
+"<!-- XML Sitemap generated by Leonard -->");
+       out5.flush(); 
+       out5.close();       
+       fw5.close();    
     }  
 }
