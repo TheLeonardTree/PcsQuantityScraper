@@ -168,6 +168,7 @@ public class ProductPageLeonardCMS
    
 //part 5 actually write the pages to each file
    int counterthing = 0;
+   int QuickAndDirtyFix = 0;
    String CategoryNameThing = "ArrayItemCount[ItemCatCheckerCount]";
    String PageTitleNameThing = "";
    String PageMetaDescriptionNameThing = "";
@@ -541,6 +542,10 @@ filenamecounter = filenamecounter + 1;
                       out.close();       
                       //Close the File Writer
                       fw.close();  
+                      QuickAndDirtyFix = counterthing + 1 ;
+                      PageTitleNameThing = PTitleHolder[QuickAndDirtyFix];
+          PageMetaDescriptionNameThing = MetaDescriptionHolder[QuickAndDirtyFix];
+          PageDescriptionNameThing = PageDescriptionHolder[QuickAndDirtyFix]; 
             fw2 = new FileWriter(GimmeAName);
             out2 = new PrintWriter(fw2);          
           out2.print("<!DOCTYPE html>\n" +
@@ -792,8 +797,8 @@ filenamecounter = filenamecounter + 1;
             "<div class=\"bnavbar\">&nbsp;</div>\n" +
             "<div class=\"wnavbar\" width=\"10%\"><a href=\"https://www.dme.net/\" title=\"homepage\"><img src=\"https://www.dme.net/wp-content/uploads/2019/09/DME-Logo_Black-R.png\" width=\"277px\" height=\"52px\" alt=\"logo\"></a></div> <div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/\" title=\"homepage\"><h5>HOME</h5></a> </div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/products/\" alt=\"Products Page\"><h5> PRODUCTS</h5></a> </div><div width=\"10%\" class=\"wnavbar\"><h5> SOLUTIONS</h5></div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/support/\" alt=\"Support\"><h5>SUPPORT</h5></a> </div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/company/\"> <h5>COMPANY</h5></a></div><div class=\"wnavbar\"> <a href=\"https://store.milacron.com/naconfiguratorlist\"><h5>CONFIGURATORS</h5> </a></div><div class=\"wnavbar\"><a href=\"https://store.milacron.com/shop-parts?breadCrumFullItem=94\" title=\"EStore\" alt=\"Estore\"><img src=\"https://www.dme.net/wp-content/uploads/2020/02/shop-estore-button.png\" width=\"177px\" height=\"60px\" title=\"eStore\" alt=\"shop eStore\"></a></div>\n" +
             "<br>\n" +
-            "<center><h2>" + PageTitleNameThing + "With The Buy Now Button Next To The Model You Want</h2></center>\n" +
-            "<br>\n" +
+            "<center><h2>" + PageTitleNameThing + " With The Buy Now Button Next To The Model You Want</h2></center>" +
+            "<br>" +
             "<h3>" + PageDescriptionNameThing + "</h3>" +
             "<center>" +
             "<div class=\"container2\">" +
