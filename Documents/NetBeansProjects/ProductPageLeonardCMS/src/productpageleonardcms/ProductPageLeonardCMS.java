@@ -8,6 +8,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ProductPageLeonardCMS 
 {
@@ -57,7 +61,7 @@ public class ProductPageLeonardCMS
        String GimmeAName = "";
        //for phase 6
        File fileSitemap = new File("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\LeonardCMSSiteMap.xml"); 
-   
+
        //Part 1: Read The CSV To Get The Objects For Mass Page Creation Into String Arrays For Later Use
        File fileCMS = new File("C:\\Users\\tremanleo\\Documents\\LeonardCMS\\MakeMassPages.csv"); 
        BufferedReader brCMS = new BufferedReader(new FileReader(fileCMS));
@@ -194,8 +198,6 @@ public class ProductPageLeonardCMS
     
     //Combine The Title With A Climbing Number Then Remove Spaces To Make The FileName
     FileNameWithoutSpaces = PTitleHolder[FileNamePhase6Count];
-    System.out.println(FileNamePhase6Count);
-    System.out.println(FileNameWithoutSpaces);
     FileNameModifier = FileNameWithoutSpaces.replaceAll(" ", "");
     FileNameWithoutSpaces = FileNameModifier.replaceAll("/", "");
     FileNamePhase6Count++;
@@ -533,8 +535,6 @@ filenamecounter = filenamecounter + 1;
                                                 //Combine The Title With A Climbing Number Then Remove Spaces To Make The FileName
                                                 
     FileNameWithoutSpaces = PTitleHolder[FileNamePhase6Count];
-    System.out.println(FileNamePhase6Count);
-    System.out.println(FileNameWithoutSpaces);
     FileNameModifier = FileNameWithoutSpaces.replaceAll(" ", "");
     FileNameWithoutSpaces = FileNameModifier.replaceAll("/", "");
     FileNamePhase6Count++;
@@ -873,8 +873,7 @@ subloopcount = 0;
     FileNameWithoutSpaces = FileNameModifier.replaceAll("/", "");
          out5.print("	<url>\n" +
                 "<loc>" + FileNameWithoutSpaces + ".html</loc>\n" +
-"		<lastmod>2020-04-07T16:16:45+00:00</lastmod>\n" +
-"	</url>");
+                "</url>");
          FileNamePhase6Count++;
          out5.flush();
          subloopcount++;  
@@ -887,5 +886,6 @@ subloopcount = 0;
        fw5.close(); 
        
        //Part 7: Making Category Category Pages
+       //I need to split this into groups. I can use string confirmation to do this.
     }  
 }
