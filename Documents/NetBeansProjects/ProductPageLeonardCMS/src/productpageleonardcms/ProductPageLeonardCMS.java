@@ -347,7 +347,17 @@ filenamecounter = filenamecounter + 1;
             "  padding-left: 5%;	\n" +
             "}\n" +
             ".holditall\n" +
+            "#grad {\n" +
+            "background-image: linear-gradient(to bottom, #d3d3d3, white);\n" +
+            "width: 100%;\n" +
+            "height: 40px;\n" +
+            "}"+
             "{\n" +
+            "#grad2 {\n" +
+            "background-image: linear-gradient(to top, #d3d3d3, white);\n" +
+            "width: 100%;\n" +
+            "height: 40px;\n" +
+            "}"+
             "flex: 1;\n" +
             "\n" +
             "  display: flex;\n" +
@@ -470,6 +480,7 @@ filenamecounter = filenamecounter + 1;
             "<body>\n" +
             "<div class=\"bnavbar\">&nbsp;</div>\n" +
             "<div class=\"wnavbar\" width=\"10%\"><a href=\"https://www.dme.net/\" title=\"homepage\"><img src=\"https://www.dme.net/wp-content/uploads/2019/09/DME-Logo_Black-R.png\" width=\"277px\" height=\"52px\" alt=\"logo\"></a></div> <div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/\" title=\"homepage\"><h5>HOME</h5></a> </div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/products/\" alt=\"Products Page\"><h5> PRODUCTS</h5></a> </div><div width=\"10%\" class=\"wnavbar\"><h5> SOLUTIONS</h5></div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/support/\" alt=\"Support\"><h5>SUPPORT</h5></a> </div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/company/\"> <h5>COMPANY</h5></a></div><div class=\"wnavbar\"> <a href=\"https://store.milacron.com/naconfiguratorlist\"><h5>CONFIGURATORS</h5> </a></div><div class=\"wnavbar\"><a href=\"https://store.milacron.com/shop-parts?breadCrumFullItem=94\" title=\"EStore\" alt=\"Estore\"><img src=\"https://www.dme.net/wp-content/uploads/2020/02/shop-estore-button.png\" width=\"177px\" height=\"60px\" title=\"eStore\" alt=\"shop eStore\"></a></div>\n" +
+            "<div id=\"grad\" width=\"100%\"></div>" +
             "<br>\n" +
             "<center><h2>" + PageTitleNameThing + " With The Buy Now Button Next To The Model You Want</h2></center>\n" +
             "<br>\n" +
@@ -492,6 +503,7 @@ filenamecounter = filenamecounter + 1;
                "</div> \n" + "\n" +
                 "</div> \n" + 
                 "</center> \n " + 
+                "<div id=\"grad2\" width=\"100%\"></div>"+
                 "<div class=\"bnavbar\">&nbsp;</div> \n" +
                 "<div class=\"bnavbar2\"><center><a href=\"https://www.dme.net/digital-privacy-policy/\"><h4>Privacy Policy</h4></a></center></div><div class=\"bnavbar2\"><a href=\"https://www.dme.net/terms-of-sale-returns/\"><h4>Terms Of Use</h4></a></div><div class=\"hideformobilebnav\">&nbsp;</div><div class=\"hideformobilebnav\">&nbsp;</div><div class=\"bnavbar2\"><h4>© 2020 DME Company</h4></div> \n " +
                  "<div class=\"bnavbar\">&nbsp;</div>" + "\n" +
@@ -785,6 +797,17 @@ filenamecounter = filenamecounter + 1;
             "		color: white;\n" +
             "		vertical-align: middle; \n" +
             "	}\n" +
+            "#grad {\n" +
+            "background-image: linear-gradient(to bottom, #d3d3d3, white);\n" +
+            "width: 100%;\n" +
+            "height: 40px;\n" +
+            "}"+
+            "{\n" +
+            "#grad2 {\n" +
+            "background-image: linear-gradient(to top, #d3d3d3, white);\n" +
+            "width: 100%;\n" +
+            "height: 40px;\n" +
+            "}"+
             "	.bnavbar2\n" +
             "	{\n" +
             "	width: 33.33%;\n" +
@@ -805,6 +828,7 @@ filenamecounter = filenamecounter + 1;
             "<body>\n" +
             "<div class=\"bnavbar\">&nbsp;</div>\n" +
             "<div class=\"wnavbar\" width=\"10%\"><a href=\"https://www.dme.net/\" title=\"homepage\"><img src=\"https://www.dme.net/wp-content/uploads/2019/09/DME-Logo_Black-R.png\" width=\"277px\" height=\"52px\" alt=\"logo\"></a></div> <div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/\" title=\"homepage\"><h5>HOME</h5></a> </div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/products/\" alt=\"Products Page\"><h5> PRODUCTS</h5></a> </div><div width=\"10%\" class=\"wnavbar\"><h5> SOLUTIONS</h5></div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/support/\" alt=\"Support\"><h5>SUPPORT</h5></a> </div><div width=\"10%\" class=\"wnavbar\"> <a href=\"https://www.dme.net/company/\"> <h5>COMPANY</h5></a></div><div class=\"wnavbar\"> <a href=\"https://store.milacron.com/naconfiguratorlist\"><h5>CONFIGURATORS</h5> </a></div><div class=\"wnavbar\"><a href=\"https://store.milacron.com/shop-parts?breadCrumFullItem=94\" title=\"EStore\" alt=\"Estore\"><img src=\"https://www.dme.net/wp-content/uploads/2020/02/shop-estore-button.png\" width=\"177px\" height=\"60px\" title=\"eStore\" alt=\"shop eStore\"></a></div>\n" +
+            "<div id=\"grad\" width=\"100%\"></div>" +
             "<br>\n" +
             "<center><h2>" + PageTitleNameThing + " With The Buy Now Button Next To The Model You Want</h2></center>" +
             "<br>" +
@@ -830,9 +854,10 @@ filenamecounter = filenamecounter + 1;
             fw2 = new FileWriter(GimmeAName, true);
             out2 = new PrintWriter(fw2);  
              out2.print("<div class=\"row\"><div class=\"col\"><center><a href=\"https://www.dme.net/main-categories.php\">Back</a></center></div> \n" + 
-               "</div> \n" + "\n" +
+                "</div> \n" + "\n" +
                 "</div> \n" + 
                 "</center> \n " + 
+                "<div id=\"grad2\" width=\"100%\"></div>"+
                 "<div class=\"bnavbar\">&nbsp;</div> \n" +
                 "<div class=\"bnavbar2\"><center><a href=\"https://www.dme.net/digital-privacy-policy/\"><h4>Privacy Policy</h4></a></center></div><div class=\"bnavbar2\"><a href=\"https://www.dme.net/terms-of-sale-returns/\"><h4>Terms Of Use</h4></a></div><div class=\"hideformobilebnav\">&nbsp;</div><div class=\"hideformobilebnav\">&nbsp;</div><div class=\"bnavbar2\"><h4>© 2020 DME Company</h4></div> \n " +
                  "<div class=\"bnavbar\">&nbsp;</div>" + "\n" +
@@ -878,13 +903,11 @@ subloopcount = 0;
          out5.flush();
          subloopcount++;  
        }
-       subloopcount = 0;
-       
+       subloopcount = 0;       
        out5.print("</urlset>\n");
        out5.flush(); 
        out5.close();       
-       fw5.close(); 
-       
+       fw5.close();        
        //Part 7: Making Category Category Pages
        //I need to split this into groups. I can use string confirmation to do this.
     }  
