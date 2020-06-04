@@ -34,8 +34,8 @@ public static void main(String[] args) throws IOException {
      String TdHolder2 = "";
      String[] TdHolderArray = new String[99999];
      int TdHolderCounter = 0;
-      File file = new File("C:\\Users\\tremanleo\\Documents\\PCS Scraper Files\\FileArea\\Counter.txt"); 
-      File file2 = new File("C:\\Users\\tremanleo\\Documents\\PCS Scraper Files\\FileArea\\UrlLoader.txt"); 
+      File file = new File("C:\\Users\\tremanleo\\Documents\\PCSScraperFiles\\FileArea\\Counter.txt"); 
+      File file2 = new File("C:\\Users\\tremanleo\\Documents\\PCSScraperFiles\\FileArea\\UrlLoader.txt"); 
      int filenamecounter = 0;
      int filenamecounter2 = 0;
      String GimmeAName = "";
@@ -60,7 +60,7 @@ public static void main(String[] args) throws IOException {
                         br.close();
                                                 
 //Rename The Output File
-GimmeAName = ("C:\\Users\\tremanleo\\Documents\\PCS Scraper Files\\CSVArea\\PCSScrape" + filenamecounter + ".csv");    
+GimmeAName = ("C:\\Users\\tremanleo\\Documents\\PCSScraperFiles\\CSVArea\\PCSScrape" + filenamecounter + ".csv");    
 File f = new File(GimmeAName);
 FileWriter fw = new FileWriter(f);
 PrintWriter out = new PrintWriter(fw);     
@@ -68,7 +68,7 @@ PrintWriter out = new PrintWriter(fw);
 filenamecounter = filenamecounter + 1;
 
 //Save The New Number
-   FileWriter fw2 = new FileWriter("C:\\Users\\tremanleo\\Documents\\PCS Scraper Files\\FileArea\\Counter.txt");
+   FileWriter fw2 = new FileWriter("C:\\Users\\tremanleo\\Documents\\PCSScraperFiles\\FileArea\\Counter.txt");
    PrintWriter out2 = new PrintWriter(fw2);  
    out2.print(filenamecounter);
 
