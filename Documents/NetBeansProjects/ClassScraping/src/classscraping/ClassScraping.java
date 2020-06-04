@@ -123,7 +123,6 @@ String line2 = "";
     SpanHolderCounter++;
     }
     //Phase 4, Write The Stuff We Need To A File
-  out.print("Item Number" +"," + "Price" + "," + "\n");
     while(CounterOfJustice != SpanHolderCounter)
     {
     StuffToWrite = TdHolderArray[CounterOfJustice];
