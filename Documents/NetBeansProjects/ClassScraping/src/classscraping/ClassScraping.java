@@ -45,7 +45,8 @@ public static void main(String[] args) throws IOException {
 	     int SpanHolderCounter = 0;
 	     int TheNumberOfLines = 0;
 	     int CounterOfJustice = 0;    
-	     String StuffToWrite = "";  
+	     String StuffToWrite = ""; 
+             String Modifier = "";
 	     int newlinecounter = 0;
 
 	//Phase 1 Name the Output File
@@ -125,6 +126,8 @@ public static void main(String[] args) throws IOException {
 	    while(CounterOfJustice != SpanHolderCounter)
 	    {
 	    StuffToWrite = TdHolderArray[CounterOfJustice];
+            Modifier = StuffToWrite.replaceAll(" ", "");
+            StuffToWrite = Modifier.replaceAll(",", "");
 	    out.print(StuffToWrite);
 	    out.print(",");  
 	    StuffToWrite = SpanHolderArray[CounterOfJustice];
