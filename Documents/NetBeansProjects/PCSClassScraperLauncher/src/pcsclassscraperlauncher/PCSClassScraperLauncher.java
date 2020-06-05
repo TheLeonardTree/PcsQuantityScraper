@@ -51,7 +51,7 @@ public class PCSClassScraperLauncher {
                 InputStream err = proc.getErrorStream();     
                 
                 //Give it time to run
-                TimeUnit.SECONDS.sleep(13);   
+                TimeUnit.SECONDS.sleep(8);   
                     
                 //Move Number Matching URL name from URLHolder Array To Manipulator                       
                Manipulator = URLHolderArrayL[counteroftheloop];
