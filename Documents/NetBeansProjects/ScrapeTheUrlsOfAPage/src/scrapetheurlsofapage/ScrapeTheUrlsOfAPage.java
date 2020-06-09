@@ -46,7 +46,6 @@ public class ScrapeTheUrlsOfAPage {
              String Modifier = "";
 	     int newlinecounter = 0;
 
-	//Phase 1 Name the Output File
 	//Phase 0 Deciding The Name of the CSV File
 	// Read The Counter      
 	      BufferedReader br = new BufferedReader(new FileReader(file));
