@@ -128,7 +128,7 @@ public static void main(String[] args) throws IOException {
 	    StuffToWrite = TdHolderArray[CounterOfJustice];
             Modifier = StuffToWrite.replaceAll(" ", "");
             StuffToWrite = Modifier.replaceAll(",", "");
-	    out.print(StuffToWrite);
+	    out.print( "'" + StuffToWrite + "'");
 	    out.print(",");  
 	    StuffToWrite = SpanHolderArray[CounterOfJustice];
 	     out.print(StuffToWrite);  
