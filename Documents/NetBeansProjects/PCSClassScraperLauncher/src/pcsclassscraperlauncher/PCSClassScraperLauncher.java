@@ -76,8 +76,8 @@ public class PCSClassScraperLauncher {
                      fw3.close();                
 
                 // Run LeonardCSVCombiner
-                //Process proc = Runtime.getRuntime().exec("java -jar C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\LeonardScraperLauncher\\CombineUS\\LeonardCSVCombiner.jar");
-                //InputStream in2 = proc.getInputStream();
-                //InputStream err2 = proc.getErrorStream();  
+                Process proc = Runtime.getRuntime().exec("java -jar C:\\Users\\tremanleo\\Documents\\PCSScraperFiles\\FileArea\\PCSCSVCombiner.jar");
+                InputStream in2 = proc.getInputStream();
+                InputStream err2 = proc.getErrorStream();  
     }    
 }
