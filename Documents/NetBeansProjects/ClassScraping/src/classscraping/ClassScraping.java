@@ -21,11 +21,10 @@ import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 import java.io.*;  
 import javax.swing.JFrame;
+import static javax.swing.JOptionPane.showMessageDialog;
 
-public class ClassScraping 
-{
-public static void main(String[] args) throws IOException {
- 
+public class ClassScraping {
+	public static void main(String[] args) throws IOException {
 	        
 	  		 //Phase 0 Variables:   
 		     String URL = "https://www.pcs-company.com/hardened-throughout-step-pins";
@@ -129,10 +128,14 @@ public static void main(String[] args) throws IOException {
 		    StuffToWrite = TdHolderArray[CounterOfJustice];
 	            Modifier = StuffToWrite.replaceAll(" ", "");
 	            StuffToWrite = Modifier.replaceAll(",", "");
-		    out.print( "'" + StuffToWrite + "'");
+	            Modifier = StuffToWrite.replaceAll("$", "");
+	            StuffToWrite = Modifier;
+		    out.print(StuffToWrite);
 		    out.print(",");  
 		    StuffToWrite = SpanHolderArray[CounterOfJustice];
-		     out.print("'" + StuffToWrite + "'");  
+            Modifier = StuffToWrite.replaceAll("$", "");
+            StuffToWrite = Modifier.replaceAll(",", "");
+		     out.print(StuffToWrite);  
 		      out.print("\n");  
 		  
 		        newlinecounter++;
@@ -148,5 +151,5 @@ public static void main(String[] args) throws IOException {
 		   out.close();       
 		   //Close the File Writer
 		   fw.close(); 
-}
+	}
 }
