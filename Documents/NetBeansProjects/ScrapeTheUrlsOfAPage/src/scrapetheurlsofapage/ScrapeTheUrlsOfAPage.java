@@ -18,9 +18,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.swing.JOptionPane;
-import java.io.*;  
-import javax.swing.JFrame;
 
 public class ScrapeTheUrlsOfAPage {
     public static void main(String[] args) throws IOException {
