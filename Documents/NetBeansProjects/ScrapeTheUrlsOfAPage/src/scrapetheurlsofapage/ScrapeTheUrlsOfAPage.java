@@ -21,7 +21,7 @@ import java.io.PrintWriter;
 
 public class ScrapeTheUrlsOfAPage {
     public static void main(String[] args) throws IOException {
-       //Phase 0 Variables:   
+//Phase 0 Variables:   
 	     String URL = "https://www.pcs-company.com/hardened-throughout-step-pins";
 	     String Checker = "Item No";
 	     String Checker2 = "Price(USD)";
@@ -31,8 +31,8 @@ public class ScrapeTheUrlsOfAPage {
              String ItemNameStopper2 = "";
 	     String[] TdHolderArray = new String[99999];
 	     int TdHolderCounter = 0;
-	      File file = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\ScrapeTheUrlsOfAPage\\CustomFiles\\FileArea\\Counter.txt"); 
-	      File file2 = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\ScrapeTheUrlsOfAPage\\CustomFiles\\FileArea\\UrlLoader.txt"); 
+	      File file = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\Counter.txt"); 
+	      File file2 = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\UrlLoader.txt"); 
 	     int filenamecounter = 0;
 	     int filenamecounter2 = 0;
 	     String GimmeAName = "";
@@ -43,7 +43,7 @@ public class ScrapeTheUrlsOfAPage {
 	     int TheNumberOfLines = 0;
 	     int CounterOfJustice = 0;    
 	     String StuffToWrite = ""; 
-             String Modifier = "";
+         String Modifier = "";
 	     int newlinecounter = 0;
 
 	//Phase 0 Deciding The Name of the CSV File
@@ -53,11 +53,10 @@ public class ScrapeTheUrlsOfAPage {
 				while ((line = br.readLine()) != null) 
 	                        {
 	                                filenamecounter = Integer.parseInt(line);  
-				}
-	                        br.close();
-	                                                
+	                        }
+								br.close();	                                                
 	//Rename The Output File
-	GimmeAName = ("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\ScrapeTheUrlsOfAPage\\CustomFiles\\CSVArea\\PCSURLS" + filenamecounter + ".csv");    
+	GimmeAName = ("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\CSVArea\\PCSURLS" + filenamecounter + ".csv");    
 	File f = new File(GimmeAName);
 	FileWriter fw = new FileWriter(f);
 	PrintWriter out = new PrintWriter(fw);     
@@ -65,7 +64,7 @@ public class ScrapeTheUrlsOfAPage {
 	filenamecounter = filenamecounter + 1;
 
 	//Save The New Number
-	   FileWriter fw2 = new FileWriter("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\ScrapeTheUrlsOfAPage\\CustomFiles\\FileArea\\Counter.txt");
+	   FileWriter fw2 = new FileWriter("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\Counter.txt");
 	   PrintWriter out2 = new PrintWriter(fw2);  
 	   out2.print(filenamecounter);
 	   out2.flush(); 
@@ -95,6 +94,8 @@ public class ScrapeTheUrlsOfAPage {
 	        //System.out.println(tdgrabber); 
 	        TdHolder = tdgrabber.attr("data-label");
 	       // System.out.println(holder);
+	       	 fw = new FileWriter(f,true);
+	    	 out = new PrintWriter(fw);   
 	        if(TdHolder.equals(Checker))
 	        {
 	           //System.out.println("Success");
@@ -125,7 +126,10 @@ public class ScrapeTheUrlsOfAPage {
 	        }
                 	   //Flush the output to the file
 	    out.flush(); 
-	    //Close the Print Writer    
+	    //Close the Print Writer
+	   out.close();  
+	   //Close the File Writer
+	   fw.close();  
 	    }  
             	    out.flush(); 
 	    //Close the Print Writer
