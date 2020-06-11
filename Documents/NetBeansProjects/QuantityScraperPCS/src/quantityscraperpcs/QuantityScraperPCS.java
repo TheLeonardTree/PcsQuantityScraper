@@ -12,23 +12,10 @@ import org.jsoup.select.Elements;
 public class QuantityScraperPCS {
 
     public static void main(String[] args) throws IOException {
-   String Checker = "Item No";
-     String Checker2 = "Price(USD)";
-     String holder = "";
-     String holderA = "";
      String holder2 = "";
-     String holder2A = "";
-     String URL = "https://www.pcs-company.com/hardened-throughout-step-pins";
-	     String TdHolder = "";
-	     String TdHolder2 = "";
-             String ItemNameStopper = "";
-             String ItemNameStopper2 = "";
-	     String[] TdHolderArray = new String[99999];
-	     int TdHolderCounter = 0;
-	      File file = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\ScrapeTheUrlsOfAPage\\CustomFiles\\FileArea\\Counter.txt"); 
-	      File file2 = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\ScrapeTheUrlsOfAPage\\CustomFiles\\FileArea\\UrlLoader.txt"); 
+     String URL = "";
+	     File file2 = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\ScrapeTheUrlsOfAPage\\CustomFiles\\FileArea\\UrlLoader.txt"); 
 	     int filenamecounter = 0;
-	     int filenamecounter2 = 0;
 	     String GimmeAName = "";
 	     String[] SpanHolderArray = new String[99999];
 	     int SpanHolderCounter = 0;
@@ -50,6 +37,8 @@ public class QuantityScraperPCS {
    NameOfTheItem = h1.text();
    System.out.println(NameOfTheItem);
 }     
+                              Modifier = NameOfTheItem.replaceAll(" ", "");
+                         NameOfTheItem = Modifier.replaceAll(",", "");
      //Set The Name of The File
      NameTheFile = "C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\QuantityScraperLauncher\\CustomFiles\\CSVArea\\" + NameOfTheItem + ".csv";
        File f = new File(NameTheFile);
@@ -69,14 +58,14 @@ public class QuantityScraperPCS {
 		    }
 		    //Phase 4, Write The Stuff We Need To A File                    
                     //ItemName
- 
+
                         out.print(NameOfTheItem); 
                         out.print(","); 
                     
                     //Quantity
 		    StuffToWrite = SpanHolderArray[CounterOfJustice];
             Modifier = StuffToWrite.replaceAll("Quantity Available: ", "");
-            StuffToWrite = Modifier.replaceAll(",", "");
+            StuffToWrite = Modifier.replaceAll(",", "");            
 		     out.print(StuffToWrite);  
 		      out.print("\n");  
 		  
