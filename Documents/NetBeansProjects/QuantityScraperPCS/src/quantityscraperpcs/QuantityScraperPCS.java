@@ -1,6 +1,8 @@
 package quantityscraperpcs;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +16,8 @@ public class QuantityScraperPCS {
     public static void main(String[] args) throws IOException {
      String holder2 = "";
      String URL = "";
-	     File file2 = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\ScrapeTheUrlsOfAPage\\CustomFiles\\FileArea\\UrlLoader.txt"); 
+             File file = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\QuantityScraperLauncher\\CustomFiles\\FileArea\\Counter.txt"); 
+	     File file2 = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\QuantityScraperLauncher\\CustomFiles\\FileArea\\UrlLoader.txt"); 
 	     int filenamecounter = 0;
 	     String GimmeAName = "";
 	     String[] SpanHolderArray = new String[99999];
@@ -26,19 +29,29 @@ public class QuantityScraperPCS {
 	     int newlinecounter = 0;
              String StuffToWrite = "";
              String NameOfTheItem = "";
-             String NameTheFile = "";             
+             String NameTheFile = "";   
+             int counter = 0;
+             
+             BufferedReader br2 = new BufferedReader(new FileReader(file2));                      
+             String line2 = "";
+			while ((line2 = br2.readLine()) != null) 
+	                    {
+	                        URL = line2;
+	                        System.out.println(line2);
+                            }	            
+	                    br2.close();
 
-  Document doc = Jsoup.connect("https://www.pcs-company.com/ae-041620").timeout(1000 * 1000).get();
+        Document doc = Jsoup.connect(URL).timeout(1000 * 1000).get();
         Elements spangrabbers = doc.getElementsByClass("table-wrapper");
         Elements h1s = doc.select("h1");  
     //Grabs the title of the page
-     for (Element h1 : h1s) 
-{     
+   for (Element h1 : h1s) 
+   {     
    NameOfTheItem = h1.text();
    System.out.println(NameOfTheItem);
-}     
-                              Modifier = NameOfTheItem.replaceAll(" ", "");
-                         NameOfTheItem = Modifier.replaceAll(",", "");
+   }     
+     Modifier = NameOfTheItem.replaceAll(" ", "");
+     NameOfTheItem = Modifier.replaceAll(",", "");
      //Set The Name of The File
      NameTheFile = "C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\QuantityScraperLauncher\\CustomFiles\\CSVArea\\" + NameOfTheItem + ".csv";
        File f = new File(NameTheFile);
