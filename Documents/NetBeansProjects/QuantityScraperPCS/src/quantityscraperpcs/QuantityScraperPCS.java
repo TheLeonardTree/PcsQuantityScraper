@@ -32,6 +32,25 @@ public class QuantityScraperPCS {
              String NameTheFile = "";   
              int counter = 0;
              
+             //Phase 0 Deciding The Name of the CSV File
+	// Read The Counter      
+	      BufferedReader br = new BufferedReader(new FileReader(file));
+				String line;
+				while ((line = br.readLine()) != null) 
+	                        {
+	                                counter = Integer.parseInt(line);  
+	                        }
+								br.close();	
+                                                      counter++;
+           FileWriter fw2 = new FileWriter("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\QuantityScraperLauncher\\CustomFiles\\FileArea\\Counter.txt");
+	   PrintWriter out2 = new PrintWriter(fw2);  
+	   out2.print(counter);
+	   out2.flush(); 
+	   //Close the Print Writer
+	   out2.close();       
+	   //Close the File Writer
+	   fw2.close();                                                            
+             
              BufferedReader br2 = new BufferedReader(new FileReader(file2));                      
              String line2 = "";
 			while ((line2 = br2.readLine()) != null) 
