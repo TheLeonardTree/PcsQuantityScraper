@@ -1,4 +1,3 @@
-
 package urlscraperlauncher;
 
 import java.io.BufferedReader;
@@ -17,13 +16,72 @@ public class UrlScraperLauncher {
      int counteroftheloop  = 0;
        int loopcap = 0;
        int subloopcount = 0;
-       File file3 = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\urlstoscrape.txt");  
+       int filenamecounter = 0;
+       
+       File file4 = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\CounterForMassiveScrapes.txt");
+       File file3 = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\urlstoscrape0.txt");  
        File UrlLoaderFile = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\UrlLoader.txt");
        BufferedReader br3 = new BufferedReader(new FileReader(file3));
-       String Manipulator = "";     
+       String Manipulator = "";
        
+       //Check What List We Are Scraping During This Run
+         BufferedReader br = new BufferedReader(new FileReader(file4));
+				String line;
+				while ((line = br.readLine()) != null) 
+	                        {
+	                                filenamecounter = Integer.parseInt(line);  
+	                        }
+				br.close();
+                                                                
+         BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\urlstoscrape0.txt"));  
+       
+        if(filenamecounter == 4)
+        {
+         reader = new BufferedReader(new FileReader("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\urlstoscrape4.txt"));   
+         br3 = new BufferedReader(new FileReader("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\urlstoscrape4.txt"));
+        filenamecounter++;
+        }
+        if(filenamecounter == 3)
+        {
+         reader = new BufferedReader(new FileReader("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\urlstoscrape3.txt"));   
+        br3 = new BufferedReader(new FileReader("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\urlstoscrape3.txt"));
+         filenamecounter++;
+        } 
+        if(filenamecounter == 2)
+        {
+         reader = new BufferedReader(new FileReader("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\urlstoscrape2.txt"));   
+        br3 = new BufferedReader(new FileReader("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\urlstoscrape2.txt"));
+         filenamecounter++;
+        } 
+         if(filenamecounter == 1)
+        {
+         reader = new BufferedReader(new FileReader("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\urlstoscrape1.txt"));   
+        br3 = new BufferedReader(new FileReader("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\urlstoscrape1.txt"));
+         filenamecounter++;
+        }     
+        if(filenamecounter == 0)
+        {
+         reader = new BufferedReader(new FileReader("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\urlstoscrape0.txt"));   
+        br3 = new BufferedReader(new FileReader("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\urlstoscrape0.txt"));
+         filenamecounter++;
+               }
+        if(filenamecounter == 5)
+        {
+        filenamecounter = 0;
+        }
+ 	System.out.println(filenamecounter);
+        File f7 = new File("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\CounterForMassiveScrapes.txt");
+	FileWriter fw7 = new FileWriter(f7);
+	PrintWriter out7 = new PrintWriter(fw7);
+        	   out7.print(filenamecounter);
+	   out7.flush(); 
+	   //Close the Print Writer
+	   out7.close();       
+	   //Close the File Writer
+	   fw7.close();   
+        
         //Check the number of lines in the url holder txt file, then set the scraping for that many lines / set the sring array to hold that many lines.
-        BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\tremanleo\\Documents\\NetBeansProjects\\UrlScraperLauncher\\CustomFiles\\FileArea\\urlstoscrape.txt"));
+        
         int NumberOfLines = 0;
         while (reader.readLine() != null) NumberOfLines++;
         reader.close();
@@ -51,7 +109,7 @@ public class UrlScraperLauncher {
                 InputStream err = proc.getErrorStream();     
                 
                 //Give it time to run
-                TimeUnit.SECONDS.sleep(8);   
+                TimeUnit.SECONDS.sleep(5);   
                     
                 //Move Number Matching URL name from URLHolder Array To Manipulator                       
                Manipulator = URLHolderArrayL[counteroftheloop];
